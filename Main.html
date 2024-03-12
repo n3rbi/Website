@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Website!</title>
+    <style>
+        #muteButton {
+            width: 50px;
+            height: 50px;
+        }
+
+        body {
+            background-image: url('images/BackGround.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        a {
+            font-size: 24px;
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>   
+    <audio id="bgMusic" autoplay loop>
+        <source src="BGMusic.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <img src="images/Unmuted.png" id="muteButton" onclick="toggleMute()" alt="Mute/Unmute">
+
+    <script>
+        function toggleMute() {
+            var audio = document.getElementById('bgMusic');
+            if (audio.volume === 0) {
+                audio.volume = audio.dataset.previousVolume || 0.1;
+                document.getElementById('muteButton').src = 'images/Unmuted.png';
+            } else {
+                audio.dataset.previousVolume = audio.volume;
+                audio.volume = 0;
+                document.getElementById('muteButton').src = 'images/Muted.png';
+            }
+        }
+    </script>
+
+    <a href="https://discord.gg/9qbdt22eSx">
+        Coming soon, for progress updates click here!
+    </a>
+</body>
+</html>
